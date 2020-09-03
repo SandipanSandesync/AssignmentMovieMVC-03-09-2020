@@ -1,0 +1,39 @@
+﻿@model  MovieCustomerMVAAppWithAuthentication.ViewModel.NewMovieViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Save", "Movie"))
+{
+    <div class="form-group">
+        @Html.LabelFor(a => a.Movie.Name)
+        @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a=>a.Movie.Name)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Movie.Genre)
+        @Html.DropDownListFor(a => a.Movie.GenreId, new SelectList(Model.Genres, "Id", "Category"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Movie.GenreId)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Movie.ReleaseDate)
+        @Html.TextBoxFor(m => m.Movie.ReleaseDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Movie.ReleaseDate)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Movie.NoInStocks)
+        @Html.TextBoxFor(m => m.Movie.NoInStocks, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Movie.NoInStocks)
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+    @Html.HiddenFor(m => m.Movie.Id);
+
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

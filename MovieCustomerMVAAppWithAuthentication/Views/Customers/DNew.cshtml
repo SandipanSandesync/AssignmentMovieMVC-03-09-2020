@@ -1,0 +1,20 @@
+﻿@model MovieCustomerMVAAppWithAuthentication.ViewModel.NewCustomerViewModel
+@{
+    ViewBag.Title = "DNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DNew</h2>
+
+@using (Html.BeginForm("Del", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.Customer.Id);
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+
+}
